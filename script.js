@@ -11,5 +11,5 @@ btnCheck.addEventListener("click", () => {
   console.log("Normal text :" + normalText, "Reverselist : " + reverseList);
   const reverseText = reverseList.join("");
   console.log("Reverse text : " + reverseText);
-  output.innerText = "Reverse text : " + reverseText;
+  output.innerText = reverseText;
 });
