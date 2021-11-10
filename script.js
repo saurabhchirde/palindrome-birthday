@@ -31,8 +31,8 @@ function dateToString(date) {
 }
 
 var date = {
-  day: 24,
-  month: 9,
+  day: 2,
+  month: 02,
   year: 2020,
 };
 
@@ -48,4 +48,15 @@ function dateVariations(date) {
   return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
 }
 
-console.log(dateVariations(date));
+function isPalindromeAllDateVariations() {
+  const dateArray = dateVariations(date);
+  for (let i = 0; i < dateArray.length; i++) {
+    if (checkPalindrome(dateArray[i])) {
+      return true;
+      break;
+    }
+    return false;
+  }
+}
+
+console.log(isPalindromeAllDateVariations(date));
