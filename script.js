@@ -52,11 +52,11 @@ function isPalindromeAllDateVariations() {
   const dateArray = dateVariations(date);
   for (let i = 0; i < dateArray.length; i++) {
     if (checkPalindrome(dateArray[i])) {
-      return true;
+      output.innerText = "Date is Palindrome";
       break;
     }
-    return false;
+    output.innerText = "Daate is not palindrome";
   }
 }
 
-console.log(isPalindromeAllDateVariations(date));
+btnCheck.addEventListener("click", isPalindromeAllDateVariations);
