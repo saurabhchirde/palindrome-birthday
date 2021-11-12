@@ -30,12 +30,6 @@ function dateToString(date) {
   return dateStr;
 }
 
-var date = {
-  day: 2,
-  month: 02,
-  year: 2020,
-};
-
 function dateVariations(date) {
   var dateStr = dateToString(date);
 
@@ -48,15 +42,30 @@ function dateVariations(date) {
   return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
 }
 
-function isPalindromeAllDateVariations() {
+function clickHandler() {
+  var listDate = inputText.value.split("-");
+  var date = { day: listDate[2], month: listDate[1], year: listDate[0] };
+
+  isPalindromeAllDateVariations(date);
+}
+
+function isPalindromeAllDateVariations(date) {
   const dateArray = dateVariations(date);
   for (let i = 0; i < dateArray.length; i++) {
     if (checkPalindrome(dateArray[i])) {
       output.innerText = "Date is Palindrome";
       break;
     }
-    output.innerText = "Daate is not palindrome";
+    output.innerText = "Date is not palindrome";
   }
 }
 
-btnCheck.addEventListener("click", isPalindromeAllDateVariations);
+btnCheck.addEventListener("click", clickHandler);
+
+//check next palindrome
+
+//for future date - increase date respect to their months increase counter to use as days
+//check for paindrome
+//for previous date - decrease date with increasing counter
+//check for palindrome
+//
