@@ -46,7 +46,7 @@ function clickHandler() {
   var listDate = inputText.value.split("-");
   var date = { day: listDate[2], month: listDate[1], year: listDate[0] };
 
-  isPalindromeAllDateVariations(date);
+  nextPalindrome(date);
 }
 
 function isPalindromeAllDateVariations(date) {
@@ -60,10 +60,78 @@ function isPalindromeAllDateVariations(date) {
   }
 }
 
-btnCheck.addEventListener("click", clickHandler);
+// btnCheck.addEventListener("click", clickHandler);
+var date = {
+  day: 31,
+  month: 12,
+  year: 2020,
+};
+
+//leap year function
+function leapYear(year) {
+  if (year % 400 === 0) {
+    return true;
+  }
+  if (year % 100 === 0) {
+    return false;
+  }
+  if (year % 4 === 0) {
+    return true;
+  }
+  return false;
+}
+
+//next date
+function nextDate(date) {
+  var day = date.day + 1;
+  var month = date.month;
+  var year = date.year;
+
+  const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  if (month === 2) {
+    if (leapYear(year)) {
+      if (day > 29) {
+        day = 1;
+        month++;
+      }
+    } else {
+      if (day > 28) {
+        day = 1;
+        month++;
+      }
+    }
+  } else {
+    if (day > monthDays[month - 1]) {
+      day = 1;
+      month++;
+    }
+  }
+
+  if (month > 12) {
+    month = 1;
+    year++;
+  }
+
+  return { day: day, month: month, year: year };
+}
 
 //check next palindrome
+function nextPalindrome(date) {
+  var cnt = 0;
+  var nxtDate = nextDate(date);
+  while (1) {
+    cnt++;
+    var isPalindrome = isPalindromeAllDateVariations(nxtDate);
+    if (isPalindrome) {
+      break;
+    }
+    nxtDate = nextDate(nxtDate);
+  }
+  return [cnt, nxtDate];
+}
 
+console.log(nextPalindrome(date), cnt);
 //for future date - increase date respect to their months increase counter to use as days
 //check for paindrome
 //for previous date - decrease date with increasing counter
