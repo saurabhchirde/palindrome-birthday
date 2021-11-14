@@ -1,4 +1,4 @@
-const inputText = document.querySelector(".stringCheck");
+const inputText = document.querySelector(".birthDate");
 const btnCheck = document.querySelector(".btnCheck");
 
 const output = document.querySelector(".output");
@@ -42,30 +42,17 @@ function dateVariations(date) {
   return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
 }
 
-function clickHandler() {
-  var listDate = inputText.value.split("-");
-  var date = { day: listDate[2], month: listDate[1], year: listDate[0] };
-
-  nextPalindrome(date);
-}
-
 function isPalindromeAllDateVariations(date) {
   const dateArray = dateVariations(date);
+  var flag = false;
   for (let i = 0; i < dateArray.length; i++) {
     if (checkPalindrome(dateArray[i])) {
-      output.innerText = "Date is Palindrome";
+      flag = true;
       break;
     }
-    output.innerText = "Date is not palindrome";
   }
+  return flag;
 }
-
-// btnCheck.addEventListener("click", clickHandler);
-var date = {
-  day: 31,
-  month: 12,
-  year: 2020,
-};
 
 //leap year function
 function leapYear(year) {
@@ -113,11 +100,15 @@ function nextDate(date) {
     year++;
   }
 
-  return { day: day, month: month, year: year };
+  return {
+    day: day,
+    month: month,
+    year: year,
+  };
 }
 
 //check next palindrome
-function nextPalindrome(date) {
+function nextDatePalindrome(date) {
   var cnt = 0;
   var nxtDate = nextDate(date);
   while (1) {
@@ -131,9 +122,25 @@ function nextPalindrome(date) {
   return [cnt, nxtDate];
 }
 
-console.log(nextPalindrome(date), cnt);
-//for future date - increase date respect to their months increase counter to use as days
-//check for paindrome
-//for previous date - decrease date with increasing counter
-//check for palindrome
-//
+function clickHandler() {
+  var input = inputText.value;
+  if (input !== "") {
+    var listDate = input.split("-");
+    var date = {
+      day: Number(listDate[2]),
+      month: Number(listDate[1]),
+      year: Number(listDate[0]),
+    };
+    var isPalindrome = isPalindromeAllDateVariations(date);
+    if (isPalindrome) {
+      output.innerText = "Your birthday is Palindrome ! ☻ ";
+    } else {
+      var [ctr, nxtPalin] = nextDatePalindrome(date);
+      output.innerText = `The next palindrome is ${nxtPalin.day}-${nxtPalin.month}-${nxtPalin.year} , you missed by ${ctr} days :( from ${date.day}-${date.month}-${date.year}`;
+    }
+  } else {
+    output.innerText = "Enter valid date ";
+  }
+}
+
+btnCheck.addEventListener("click", clickHandler);
