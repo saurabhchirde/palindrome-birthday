@@ -49,9 +49,13 @@ button {
 }
 
 .output {
-  margin: 5rem auto;
+  margin: 2rem auto;
   width: 80%;
+  height: 150px;
   font-size: 1.9rem;
+  padding: 2rem 0.7rem;
+  border-radius: 20px;
+  border: 1px dashed var(--text-color);
 }
 
 @media screen and (min-width: 640px) {
@@ -80,5 +84,6 @@ button {
 
   .output {
     font-size: 2rem;
+    width: 75%;
   }
 }
