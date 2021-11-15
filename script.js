@@ -136,7 +136,7 @@ function clickHandler() {
       output.innerText = "Your birthday is Palindrome ! ☻ ";
     } else {
       var [ctr, nxtPalin] = nextDatePalindrome(date);
-      output.innerText = `The next palindrome is ${nxtPalin.day}-${nxtPalin.month}-${nxtPalin.year} , you missed by ${ctr} days :( from ${date.day}-${date.month}-${date.year}`;
+      output.innerText = `The next palindrome date is "${nxtPalin.day}-${nxtPalin.month}-${nxtPalin.year}" ,\n you missed it by ${ctr} days :( `;
     }
   } else {
     output.innerText = "Enter valid date ";
