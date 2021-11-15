@@ -12,7 +12,7 @@ html {
   color: var(--text-color);
 }
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 body {
   margin: 4rem auto 1rem auto;
@@ -21,18 +21,19 @@ body {
 }
 
 .container {
-  margin: 1rem 2rem;
+  margin: 1rem auto;
 }
 
 label {
   text-align: center;
   margin: auto;
+  width: 100px;
   font-size: 1.3rem;
 }
 
 input {
-  margin: 1rem;
-  width: 170px;
+  margin: 1rem 0.2rem 1rem 0.5rem;
+  width: 140px;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   border-radius: 30px;
