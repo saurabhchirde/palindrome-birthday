@@ -139,7 +139,7 @@ function clickHandler() {
       output.innerText = `The next palindrome date is "${nxtPalin.day}-${nxtPalin.month}-${nxtPalin.year}" ,\n you missed it by ${ctr} days :( `;
     }
   } else {
-    output.innerText = "Enter valid date ";
+    output.innerText = "enter or select a valid date ";
   }
 }
 
